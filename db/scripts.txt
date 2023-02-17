@@ -4,3 +4,6 @@ migrate -path db/migration -database "postgresql://postgres:root@localhost:5432/
 
 // To run down migration on postgresql DB 
 migrate -path db/migration -database "postgresql://postgres:root@localhost:5432/godb?sslmode=disable" -verbose down
+
+//To run up migration on mysql DB
+migrate -path db/migration -database "mysql://root:password@tcp(localhost:3306)/godb" -verbose up

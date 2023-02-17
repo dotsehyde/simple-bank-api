@@ -8,9 +8,11 @@ dropdb:
 	docker exec -it $(container_name) dropdb $(db_name)
 
 migrateup:
-	migrate -path db/migration -database "postgresql://postgres:root@localhost:5432/godb?sslmode=disable" -verbose up
-
+	migrate -path db/migration -database "mysql://root@tcp(localhost:3306)/godb" -verbose up
 migratedown:
-	migrate -path db/migration -database "postgresql://postgres:root@localhost:5432/godb?sslmode=disable" -verbose down
-	
-.PHONY:postgres createdb dropdb migrateup migratedown
+	migrate -path db/migration -database "mysql://root@tcp(localhost:3306)/godb" -verbose down
+sqlcinstall:
+	go install github.com/kyleconroy/sqlc/cmd/sqlc@latestmple-bank-api.git
+sqlc:
+	sqlc generate
+.PHONY:postgres createdb dropdb migrateup migratedown sqlcinstall sqlc
