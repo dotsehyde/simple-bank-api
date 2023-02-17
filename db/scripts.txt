@@ -1,0 +1,6 @@
+
+// To run up migration on postgresql DB 
+migrate -path db/migration -database "postgresql://postgres:root@localhost:5432/godb?sslmode=disable" -verbose up
+
+// To run down migration on postgresql DB 
+migrate -path db/migration -database "postgresql://postgres:root@localhost:5432/godb?sslmode=disable" -verbose down
